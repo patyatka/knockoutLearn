@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+	<form name="task" data-bind="submit: addTask" >
+		<label for="taskName">Title of task</label>
+		<input id="taskName" type="text" name="nameTask" data-bind="value: taskToAdd, valueUpdate: 'afterkeydown'"/>
+		<input type="submit" name="submit" data-bind="enable: taskToAdd().length > 0"/>
+	</form>
+	<p>You have <span data-bind="text: tasks().length">&nbsp;</span> task(s)</p>
+	<div id="taskBasket" data-bind="template: { name: 'tasksTemplate', foreach: tasks }">
+	</div>
+	<script type="text/html" id="tasksTemplate">
+		<div data-bind='html: task, click: deleteTask'></div>
+	</script>
+	<script src="js/knockout.js"></script>
+	<script src="js/core.js"></script>
+	<script src="js/underscore.js"></script>
+</body>
+</html>
